@@ -10,9 +10,17 @@ export const environment = {
   production: false,
   version: env.npm_package_version + '-dev',
   serverUrl: '/api',
-  defaultLanguage: 'en-US',
+  defaultLanguage: 'ja-JP',
   supportedLanguages: [
     'en-US',
-    'fr-FR'
-  ]
+    'ja-JP'
+  ],
+  firebase: {
+    apiKey: '<your-key>',
+    authDomain: '<your-project-authdomain>',
+    databaseURL: 'ws://localhost:5000',
+    projectId: '<your-project-id>',
+    storageBucket: '<your-storage-bucket>',
+    messagingSenderId: '<your-messaging-sender-id>'
+  }
 };

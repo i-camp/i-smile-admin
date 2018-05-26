@@ -5,11 +5,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { environment } from '@env/environment';
 import { CoreModule } from '@app/core';
 import { SharedModule } from '@app/shared';
 import { HomeModule } from './home/home.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireModule } from 'angularfire2';
 
 @NgModule({
   imports: [
@@ -21,7 +24,9 @@ import { AppRoutingModule } from './app-routing.module';
     CoreModule,
     SharedModule,
     HomeModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(environment.firebase)
   ],
   declarations: [AppComponent],
   providers: [
