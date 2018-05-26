@@ -1,0 +1,20 @@
+{
+  "generator-ngx-rocket": {
+    "version": "5.0.0",
+    "props": {
+      "location": "path",
+      "appName": "okashitay-ar-admin",
+      "target": [
+        "web"
+      ],
+      "pwa": false,
+      "ui": "bootstrap",
+      "auth": false,
+      "lazy": true,
+      "angulartics": false,
+      "projectName": "okashitay-ar-admin",
+      "packageManager": "npm",
+      "mobile": []
+    }
+  }
+}
