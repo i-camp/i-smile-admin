@@ -1,0 +1,13 @@
+@import "../../../../theme/theme-variables";
+
+.controller-container {
+  color: $white;
+  font-size: 2rem;
+  box-sizing: border-box;
+}
+
+.control-button {
+  &:hover {
+    color: $gray-700;
+  }
+}

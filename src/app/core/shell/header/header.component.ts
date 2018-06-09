@@ -10,7 +10,6 @@ import { I18nService } from '../../i18n.service';
 export class HeaderComponent implements OnInit {
 
   menuHidden = true;
-
   constructor(private i18nService: I18nService) { }
 
   ngOnInit() { }

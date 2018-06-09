@@ -28,6 +28,7 @@
     "@fortawesome/fontawesome-free-webfonts": "^1.0.9",
     "@ng-bootstrap/ng-bootstrap": "^2.0.0",
     "@ngx-translate/core": "^10.0.1",
+    "angular2-uuid": "^1.1.1",
     "angularfire2": "^5.0.0-rc.10",
     "bootstrap": "^4.1.1",
     "core-js": "^2.5.6",
