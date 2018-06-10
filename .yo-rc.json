@@ -3,7 +3,7 @@
     "version": "5.0.0",
     "props": {
       "location": "path",
-      "appName": "okashitay-ar-admin",
+      "appName": "i-smile-admin",
       "target": [
         "web"
       ],
@@ -12,7 +12,7 @@
       "auth": false,
       "lazy": true,
       "angulartics": false,
-      "projectName": "okashitay-ar-admin",
+      "projectName": "i-smile-admin",
       "packageManager": "npm",
       "mobile": []
     }

@@ -1,4 +1,4 @@
-# okashitay-ar-admin
+# i-smile-admin
 
 Welcome to the project documentation!
 
