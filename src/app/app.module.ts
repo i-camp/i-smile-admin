@@ -11,6 +11,7 @@ import { SharedModule } from '@app/shared';
 import { HomeModule } from './home/home.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { RankingComponent } from './ranking/ranking.component';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
 
@@ -28,7 +29,7 @@ import { AngularFireModule } from 'angularfire2';
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebase)
   ],
-  declarations: [AppComponent],
+  declarations: [AppComponent, RankingComponent],
   providers: [
   ],
   bootstrap: [AppComponent]
