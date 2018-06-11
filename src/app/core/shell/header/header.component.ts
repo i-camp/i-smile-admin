@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { I18nService } from '../../i18n.service';
 
 @Component({
-  selector: 'app-header',
+  selector: 'sml-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })

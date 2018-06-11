@@ -129,13 +129,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "app",
+      "sml",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "app",
+      "sml",
       "kebab-case"
     ],
     "no-output-on-prefix": true,

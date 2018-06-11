@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { environment } from '@env/environment';
 
 @Component({
-  selector: 'app-about',
+  selector: 'sml-about',
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.scss']
 })

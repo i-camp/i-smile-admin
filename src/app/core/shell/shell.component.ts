@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-shell',
+  selector: 'sml-shell',
   templateUrl: './shell.component.html',
   styleUrls: ['./shell.component.scss']
 })
