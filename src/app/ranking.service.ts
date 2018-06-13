@@ -1,23 +1,40 @@
-import {Injectable, OnInit} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs/internal/Subject';
+import {Observable} from 'rxjs';
+import {GameEvent, RankingEvent, SnapEvent} from '@app/game';
+import {GameManagementService} from '@app/game-management.service';
+import {flatMap} from 'rxjs/operators';
+import {AngularFireDatabase} from 'angularfire2/database';
 
 @Injectable({
   providedIn: 'root'
 })
-export class RankingService implements OnInit {
+export class RankingService {
 
-  private updatedSubject = new Subject();
+  private updatedSubject = new Subject<RankingEvent>();
 
-  constructor() { }
+  private SNAP_EVENTS_REF_PATH = 'snapEvents';
 
-  ngOnInit(): void {
-    this.execRanking();
+  constructor(private db: AngularFireDatabase, private game: GameManagementService) {
+    game.startedObservable.pipe(
+      flatMap((e: GameEvent) => db.list(`${this.SNAP_EVENTS_REF_PATH}/${e.gameId}`).valueChanges())
+    ).subscribe((events: SnapEvent[]) => {
+      setInterval(() => this.emitSummary(events), 1000);
+    });
   }
 
-  private execRanking() {
-    setInterval(() => {
-      this.updatedSubject.next({test: 'hyoooooo'});
-    }, 1000);
+  get updatedObservable(): Observable<RankingEvent> {
+    return this.updatedSubject.asObservable();
+  }
+
+  private emitSummary(events: SnapEvent[]) {
+    // TODO eventsを集計してnext
+
+    this.updatedSubject.next({
+      gameId: this.game.currentGame.id,
+      photographer: [],
+      subject: []
+    });
   }
 
 }

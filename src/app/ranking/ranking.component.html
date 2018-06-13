@@ -1,3 +1,15 @@
-<p>
-  ranking works!
-</p>
+<div class="ranking-container row">
+  <div class="photographer-container col-6">
+    <h3 translate>Photographer</h3>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item" *ngFor="let photographer of (photographers|async)">{{photographer.name}}</li>
+    </ul>
+  </div>
+  <div class="subject-container col-6">
+    <h3 translate>Subject</h3>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item" *ngFor="let subject of (subjects|async)">{{subject.name}}</li>
+    </ul>
+  </div>
+</div>
+

@@ -7,6 +7,8 @@ import { SharedModule } from '@app/shared';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { QuoteService } from './quote.service';
+import { RankingComponent } from '@app/ranking/ranking.component';
+import { PhotographGalleryComponent } from '@app/photograph-gallary/photograph-gallery.component';
 
 @NgModule({
   imports: [
@@ -17,7 +19,7 @@ import { QuoteService } from './quote.service';
     HomeRoutingModule
   ],
   declarations: [
-    HomeComponent
+    HomeComponent, RankingComponent, PhotographGalleryComponent
   ],
   providers: [
     QuoteService

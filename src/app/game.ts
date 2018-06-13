@@ -17,6 +17,12 @@ export interface SnapEvent extends GameEvent {
   photographerId: string;
   subjectId: string;
   photoUrl: string;
+  photoPath: string;
   createdAt: Date;
+}
+
+export interface RankingEvent extends GameEvent {
+  photographer: { photographerId: string }[];
+  subject: { subjectId: string }[];
 }
 
