@@ -22,7 +22,7 @@ export interface SnapEvent extends GameEvent {
 }
 
 export interface RankingEvent extends GameEvent {
-  photographer: { photographerId: string }[];
-  subject: { subjectId: string }[];
+  photographer: { photographerId: string, name: string }[];
+  subject: { subjectId: string, name: string }[];
 }
 
