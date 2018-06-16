@@ -23,7 +23,7 @@ export class PhotographService {
           gameId: 'lfkjslf',
           photographerId: 'lsjf',
           subjectId: 'dlf',
-          photoUrl: 'https://placehold.jp/3d4070/ffffff/150x150.png?text=uhyo!',
+          photoUrl: 'https://placehold.jp/3d4070/ffffff/640x640.png?text=snaped!',
           photoPath: '',
           createdAt: new Date()
         };
