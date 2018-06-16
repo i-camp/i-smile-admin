@@ -1,7 +1,9 @@
+@import "../../theme/theme-variables";
+
 .photos-container {
   display: grid;
   box-sizing: border-box;
-  clip-path: polygon(50% 25%, 75% 0, 100% 0, 100% 100%, 0 100%, 0 0, 25% 0);
+  clip-path: polygon(50% $sml-remaining-size*3, 65% 0, 100% 0, 100% 100%, 0 100%, 0 0, 35% 0);
   min-width: 100%;
   min-height: 100%;
   grid-template-areas:
