@@ -17,13 +17,13 @@ export class PhotographService {
 
   public getCurrentGameSnappedObservable(): Observable<SnapEvent> {
     // TODO for debug
-    return interval(100).pipe(
+    return interval(600).pipe(
       map(() => {
         return {
           gameId: 'lfkjslf',
           photographerId: 'lsjf',
           subjectId: 'dlf',
-          photoUrl: 'https://placehold.jp/3d4070/ffffff/150x150.png?text=uhyo!',
+          photoUrl: 'https://placehold.jp/3d4070/ffffff/150x150.png?text=写真',
           photoPath: '',
           createdAt: new Date()
         };

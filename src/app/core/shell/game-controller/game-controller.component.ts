@@ -30,7 +30,7 @@ export class GameControllerComponent implements OnInit, OnDestroy {
     }));
 
     // TODO should disable link until created Game
-    this.game.createGame({during: 3});
+    this.game.createGame({during: 30});
   }
 
   ngOnDestroy(): void {
