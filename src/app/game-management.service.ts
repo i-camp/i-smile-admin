@@ -73,6 +73,7 @@ export class GameManagementService {
         this.currentGameTimer = void 0;
         this.currentGameConfig = conf;
         this._setSubject.next({gameId: this._currentGame.id});
+        this._progressedSubject.next({gameId: this._currentGame.id, remaining: conf.during});
       });
   }
 
