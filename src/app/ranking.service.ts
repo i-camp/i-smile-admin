@@ -44,8 +44,16 @@ export class RankingService {
         // TODO dataを集計してreturn
         return {
           gameId: this.game.currentGame.id,
-          photographer: [{photographerId: 'ddd', name: 'sss2'}],
-          subject: [{subjectId: 'sss', name: 'sss2'}]
+          photographer: [
+            {photographerId: 'ddd', name: 'sss2'},
+            {photographerId: 'ddd', name: 'sss2'},
+            {photographerId: 'ddd', name: 'sss2'}
+          ],
+          subject: [
+            {subjectId: 'sss', name: 'sss2'},
+            {subjectId: 'sss', name: 'sss2'},
+            {subjectId: 'sss', name: 'sss2'}
+          ]
         };
       }));
   }
