@@ -23,7 +23,7 @@ export class PhotographService {
           gameId: 'lfkjslf',
           photographerId: 'lsjf',
           subjectId: 'dlf',
-          photoUrl: 'https://placehold.jp/3d4070/ffffff/150x150.png?text=写真',
+          photoUrl: 'assets/camera_kao_ninshiki.png',
           photoPath: '',
           createdAt: new Date()
         };

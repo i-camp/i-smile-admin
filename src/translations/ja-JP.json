@@ -4,6 +4,6 @@
   "Hello world !": "Bonjour le monde !",
   "Home": "Accueil",
   "Version": "Version",
-  "Photographer": "撮影者",
-  "Subject": "被撮影者"
+  "Photographer": "撮った人",
+  "Subject": "撮られた人"
 }
