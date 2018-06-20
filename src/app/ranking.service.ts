@@ -42,8 +42,9 @@ export class RankingService {
   private aggregateGameProgress(gameId: string): Observable<RankingEvent> {
     return this.getGameProgress(gameId).pipe(
       map((data: GameProgress) => {
+
         // TODO dataを集計してreturn
-       return new SortPlayer().hoge(data);
+        return new SortPlayer().sortData(data);
        /*
        return {
           gameId: this.game.currentGame.id,

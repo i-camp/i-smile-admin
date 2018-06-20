@@ -2,17 +2,63 @@ export class SortPlayer {
     private sortList: SortedPlayersList;
     private countList: CountPlayerList;
     private nameList: PlayerNameList;
-    hoge(data: GameProgress): SortedPlayersList {
+    private testObj: GameProgress;
+
+    sortData(data: GameProgress): SortedPlayersList {
+
+        this.testObj = {
+            gameId: 'aaa',
+            players: [
+                {id: 'p001', name: 'p002'},
+                {id: 'yasu', name: 'tsukamoto'}
+            ],
+            snapEvents: [{
+                photographerId: 'p001',
+                subjectId: 's001',
+                photoUrl: 'http://test',
+                photoPath: '//test_path',
+                createdAt: new Date('2018-06-19T23:38:52.037Z')
+            }]
+        };
+
+        this.nameList = {
+            string: ''
+        };
+
+        this.countList = {
+            photographerScore: [{
+                id: '',
+                name: '',
+                count: 0
+            }]
+        };
+
+        this.sortList = {
+            gameId: '',
+            photographer: [
+                {
+                    photographerId: '',
+                    name: ''
+                }
+            ],
+            subject: [
+                {
+                    subjectId: '',
+                    name: ''
+                }
+            ]
+        };
 
         // playerと名前の対応オブジェクト作成
-        for (const value of data.players) {
+        for (const value of this.testObj.players) {
             if (value.id in this.nameList) {
             } else {
                 this.nameList[value.id] = value.name;
             }
         }
+
         // playerごとの撮影した枚数をカウントし格納
-        for (const value of data.snapEvents) {
+        for (const value of this.testObj.snapEvents) {
             if (value.photographerId in this.countList) {
                 this.countList[value.photographerId].count++;
             } else {
@@ -31,10 +77,10 @@ export class SortPlayer {
         for (const value of this.countList.photographerScore) {
             this.sortList.photographer.push({ photographerId: value.id, name: value.name });
         }
+
         return this.sortList;
     }
 }
-
 
 interface GameProgress {
     gameId: string;
@@ -70,16 +116,6 @@ interface SortedPlayersList {
         }
     ];
 }
-/*
-interface CountPlayerList {
-    photographerScore: {
-        string: {
-            name: string;
-            count: number;
-        }
-    };
-}
-*/
 
 interface CountPlayerList {
     photographerScore: [
