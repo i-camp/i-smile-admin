@@ -15,6 +15,11 @@ version 5.0.0
  npm start
  ```
 
+3. if you needed, Launch development realtime database in your computer:
+ ```sh
+ npm run firebase
+ ```
+
 # Project structure
 
 ```
