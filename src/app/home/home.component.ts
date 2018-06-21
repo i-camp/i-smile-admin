@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {GameManagementService} from "@app/game-management.service";
-import {GameEvent} from "@app/game";
+import {GameManagementService} from '@app/game-management.service';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
@@ -11,7 +10,7 @@ import {map} from 'rxjs/operators';
 })
 export class HomeComponent implements OnInit {
 
-  public remaining: Observable<GameEvent>;
+  public remaining: Observable<number>;
 
   constructor(private game: GameManagementService) {
   }

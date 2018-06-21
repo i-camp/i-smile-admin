@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs/internal/Subject';
 import {Observable, zip} from 'rxjs';
-import {GameEvent, GameProgress, RankingEvent} from '@app/game';
+import {GameProgress, RankingEvent} from '@app/game';
 import {GameManagementService} from '@app/game-management.service';
 import {map, take} from 'rxjs/operators';
 import {AngularFireDatabase} from 'angularfire2/database';
@@ -17,8 +17,8 @@ export class RankingService {
   private SUMMARY_INTERVAL_TIME = 1000;
 
   constructor(private db: AngularFireDatabase, private game: GameManagementService) {
-    game.startedObservable.subscribe((startedEvent: GameEvent) => {
-      setInterval(() => this.updateRanking(startedEvent.gameId), this.SUMMARY_INTERVAL_TIME);
+    game.startedObservable.subscribe(() => {
+      setInterval(() => this.updateRanking(), this.SUMMARY_INTERVAL_TIME);
     });
   }
 
@@ -26,24 +26,23 @@ export class RankingService {
     return this.updatedSubject.asObservable();
   }
 
-  private updateRanking(gameId: string): void {
-    this.aggregateGameProgress(gameId).subscribe((ranking: RankingEvent) => {
+  private updateRanking(): void {
+    this.aggregateGameProgress().subscribe((ranking: RankingEvent) => {
       this.updatedSubject.next(ranking);
     });
   }
 
-  private getGameProgress(gameId: string): Observable<GameProgress> {
-    const snapEvents = this.db.list(`${this.SNAP_EVENTS_REF_PATH}/${gameId}`).valueChanges().pipe(take(1));
-    const players = this.db.list(`${this.PLAYER_REF_PATH}/${gameId}`).valueChanges().pipe(take(1));
-    return zip(snapEvents, players, (s: any, p: any) => ({gameId: gameId, snapEvents: s, players: p}));
+  private getGameProgress(): Observable<GameProgress> {
+    const snapEvents = this.db.list(this.SNAP_EVENTS_REF_PATH).valueChanges().pipe(take(1));
+    const players = this.db.list(this.PLAYER_REF_PATH).valueChanges().pipe(take(1));
+    return zip(snapEvents, players, (s: any, p: any) => ({snapEvents: s, players: p}));
   }
 
-  private aggregateGameProgress(gameId: string): Observable<RankingEvent> {
-    return this.getGameProgress(gameId).pipe(
+  private aggregateGameProgress(): Observable<RankingEvent> {
+    return this.getGameProgress().pipe(
       map((data: GameProgress) => {
         // TODO dataを集計してreturn
         return {
-          gameId: this.game.currentGame.id,
           photographer: [
             {photographerId: 'ddd', name: 'sss2'},
             {photographerId: 'ddd', name: 'sss2'},
