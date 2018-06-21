@@ -51,6 +51,7 @@ Task                            | Description
 `npm start`                     | Run development server on `http://localhost:4200/`
 `npm run build [-- --env=prod]` | Lint code and build web app for production (with [AOT](https://angular.io/guide/aot-compiler)) in `dist/` folder
 `npm test`                      | Run unit tests via [Karma](https://karma-runner.github.io) in watch mode
+`npm run firebase`              | Run development realtime database on `ws://localhost:5000/`
 `npm run test:ci`               | Lint code and run unit tests once for continuous integration
 `npm run e2e`                   | Run e2e tests using [Protractor](http://www.protractortest.org)
 `npm run lint`                  | Lint code
