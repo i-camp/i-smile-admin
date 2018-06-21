@@ -61,19 +61,8 @@ export class RankingService {
 
 interface GameProgress {
   gameId: string;
-  players: [
-      {
-        id: string,
-        name: string
-      }
-  ];
-  snapEvents: [
-    {
-      photographerId: string;
-      subjectId: string;
-      photoUrl:  string;
-      photoPath:  string;
-      createdAt: Date;
-    }
-  ];
+  players:
+    { id: string, name: string }[];
+  snapEvents:
+    { photographerId: string; subjectId: string; photoUrl: string; photoPath: string; createdAt: Date; }[];
 }
