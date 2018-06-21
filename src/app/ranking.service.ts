@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs/internal/Subject';
 import {Observable, zip} from 'rxjs';
-import {GameEvent, RankingEvent} from '@app/game';
+import {GameEvent, GameProgress, RankingEvent} from '@app/game';
 import {GameManagementService} from '@app/game-management.service';
 import {map, take} from 'rxjs/operators';
 import {AngularFireDatabase} from 'angularfire2/database';
@@ -59,10 +59,3 @@ export class RankingService {
   }
 }
 
-interface GameProgress {
-  gameId: string;
-  players:
-    { id: string, name: string }[];
-  snapEvents:
-    { photographerId: string; subjectId: string; photoUrl: string; photoPath: string; createdAt: Date; }[];
-}

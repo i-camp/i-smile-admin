@@ -26,3 +26,10 @@ export interface RankingEvent extends GameEvent {
   subject: { subjectId: string, name: string }[];
 }
 
+export interface GameProgress {
+  gameId: string;
+  players:
+    { id: string, name: string }[];
+  snapEvents:
+    { photographerId: string; subjectId: string; photoUrl: string; photoPath: string; createdAt: Date; }[];
+}
