@@ -4,7 +4,7 @@ import {Observable, zip} from 'rxjs';
 import {GameProgress, RankingEvent} from '@app/game';
 import {GameManagementService} from '@app/game-management.service';
 import {map, take} from 'rxjs/operators';
-import {AngularFireDatabase} from 'angularfire2/database';
+import {AngularFireDatabase, SnapshotAction} from 'angularfire2/database';
 
 @Injectable({
   providedIn: 'root'
@@ -33,9 +33,24 @@ export class RankingService {
   }
 
   private getGameProgress(): Observable<GameProgress> {
-    const snapEvents = this.db.list(this.SNAP_EVENTS_REF_PATH).valueChanges().pipe(take(1));
-    const players = this.db.list(this.PLAYER_REF_PATH).valueChanges().pipe(take(1));
+    const snapEvents = this.db.list(this.SNAP_EVENTS_REF_PATH)
+      .valueChanges()
+      .pipe(
+        take(1)
+      );
+    const players = this.db.list(this.PLAYER_REF_PATH)
+      .snapshotChanges()
+      .pipe(
+        map(this.parsePlayersSnapshot),
+        take(1)
+      );
     return zip(snapEvents, players, (s: any, p: any) => ({snapEvents: s, players: p}));
+  }
+
+  private parsePlayersSnapshot(actions: SnapshotAction<any>[]): {id: string, name: string}[] {
+    return actions.map((action: SnapshotAction<any>) => (
+      {id: action.key, name: action.payload.val().name}
+    ));
   }
 
   private aggregateGameProgress(): Observable<RankingEvent> {
