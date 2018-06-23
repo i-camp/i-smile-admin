@@ -2,5 +2,4 @@
 <div class="controller-container">
   <a class="control-button" (click)="startGame()"><i class="far fa-play-circle" *ngIf="!isStarted && !isFinished"></i></a>
   <a class="control-button" (click)="stopGame()"><i class="far fa-stop-circle" *ngIf="isStarted && !isFinished"></i></a>
-  <span class="remaining">{{remaining}}</span>
 </div>

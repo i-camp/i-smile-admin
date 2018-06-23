@@ -1,4 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+import {GameManagementService} from '@app/game-management.service';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'sml-home',
@@ -7,10 +10,13 @@ import {Component, OnInit} from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() {
+  public remaining: Observable<number>;
+
+  constructor(private game: GameManagementService) {
   }
 
   ngOnInit() {
+    this.remaining = this.game.progressedObservable.pipe(map(event => event.remaining));
   }
 
 }

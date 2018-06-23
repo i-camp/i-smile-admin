@@ -15,6 +15,8 @@ export class RankingComponent implements OnInit {
   public photographers: Observable<any[]>;
   public subjects: Observable<any[]>;
 
+  private MAX_DISPLAYED_USERS_COUNT = 3;
+
   private logger = new Logger('RankingComponent');
 
   constructor(private ranking: RankingService) {
@@ -24,10 +26,10 @@ export class RankingComponent implements OnInit {
     // TODO should unsubscribe when stop game + n second
     const rankingObservable = this.ranking.updatedObservable.pipe(share());
     this.photographers = rankingObservable.pipe(
-      map((rank: RankingEvent) => rank.photographer)
+      map((rank: RankingEvent) => rank.photographer.slice(0,this.MAX_DISPLAYED_USERS_COUNT))
     );
     this.subjects = rankingObservable.pipe(
-      map((rank: RankingEvent) => rank.subject)
+      map((rank: RankingEvent) => rank.subject.slice(0,this.MAX_DISPLAYED_USERS_COUNT))
     );
     rankingObservable.subscribe((e) => {
       this.logger.debug(e);

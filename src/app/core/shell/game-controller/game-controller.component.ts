@@ -11,7 +11,6 @@ export class GameControllerComponent implements OnInit, OnDestroy {
 
   public isStarted: boolean;
   public isFinished: boolean;
-  public remaining: number;
 
   private subscriptions: Subscription[] = [];
 
@@ -26,15 +25,12 @@ export class GameControllerComponent implements OnInit, OnDestroy {
     this.subscriptions.push(this.game.startedObservable.subscribe(e => {
       this.isStarted = true;
     }));
-    this.subscriptions.push(this.game.progressedObservable.subscribe(e => {
-      this.remaining = e.remaining;
-    }));
     this.subscriptions.push(this.game.finishedObservable.subscribe(e => {
       this.isFinished = true;
     }));
 
     // TODO should disable link until created Game
-    this.game.createGame({during: 3});
+    this.game.createGame({during: 30});
   }
 
   ngOnDestroy(): void {

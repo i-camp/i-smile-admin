@@ -14,14 +14,14 @@ export class PhotographGalleryComponent implements OnInit {
   public photoUrls: string[] = [];
 
   private nextPaneNumber = 0;
-  private MAX_PHOTO_COUNT = 16;
+  private MAX_PHOTO_COUNT = 20;
 
   constructor(private game: GameManagementService, private photo: PhotographService) { }
 
   ngOnInit() {
     // init pane
     for (let i = 0; i < this.MAX_PHOTO_COUNT; i++) {
-      this.photoUrls[i] = 'https://placehold.jp/150x150.png';
+      this.photoUrls[i] = 'https://placehold.jp/3d4070/8082ad/640x640.png?text=i-smile';
     }
 
     // push photos to pane

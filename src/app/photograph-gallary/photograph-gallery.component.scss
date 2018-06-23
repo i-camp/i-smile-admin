@@ -1,5 +1,105 @@
-.photo-pane {
-  height: 150px;
-  width: 150px;
+@import "../../theme/theme-variables";
+
+.photos-container {
+  display: grid;
   box-sizing: border-box;
+  clip-path: polygon(50% $sml-remaining-size*3, 65% 0, 100% 0, 100% 100%, 0 100%, 0 0, 35% 0);
+  min-width: 100%;
+  min-height: 100%;
+  grid-template-areas:
+    "pane16 pane10 pane17 pane15 pane2"
+    "pane5  pane11 pane12 pane8  pane4"
+    "pane13 pane6  pane3  pane0  pane18"
+    "pane7  pane19 pane14 pane9  pane1";
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+.photo-pane {
+  filter: blur(1px) opacity(70%);
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  background-position: center;
+  background-size: cover;
+}
+
+.pane0 {
+  grid-area: pane0;
+}
+
+.pane1 {
+  grid-area: pane1;
+}
+
+.pane2 {
+  grid-area: pane2;
+}
+
+.pane3 {
+  grid-area: pane3;
+}
+
+.pane4 {
+  grid-area: pane4;
+}
+
+.pane5 {
+  grid-area: pane5;
+}
+
+.pane6 {
+  grid-area: pane6;
+}
+
+.pane7 {
+  grid-area: pane7;
+}
+
+.pane8 {
+  grid-area: pane8;
+}
+
+.pane9 {
+  grid-area: pane9;
+}
+
+.pane10 {
+  grid-area: pane10;
+}
+
+.pane11 {
+  grid-area: pane11;
+}
+
+.pane12 {
+  grid-area: pane12;
+}
+
+.pane13 {
+  grid-area: pane13;
+}
+
+.pane14 {
+  grid-area: pane14;
+}
+
+.pane15 {
+  grid-area: pane15;
+}
+
+.pane16 {
+  grid-area: pane16;
+}
+
+.pane17 {
+  grid-area: pane17;
+}
+
+.pane18 {
+  grid-area: pane18;
+}
+
+.pane19 {
+  grid-area: pane19;
 }

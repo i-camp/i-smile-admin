@@ -1,0 +1,23 @@
+@import "../../theme/theme-variables";
+
+.home-container {
+  position: relative;
+}
+
+.full-fill-wrapper {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.ranking-container {
+  top: $sml-remaining-size * 1.5;
+}
+
+.remaining-container {
+  padding-top: $sml-remaining-size * 0.5;
+  text-align: center;
+  font-size: $sml-remaining-size;
+}
