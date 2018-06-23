@@ -1,0 +1,20 @@
+.app-shell-container {
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  grid-template-areas:
+               "header"
+               "content";
+  grid-template-columns: 1fr;
+  grid-template-rows: 60px 1fr;
+}
+
+.header-container {
+  grid-area: header;
+  overflow: scroll;
+}
+
+.content-container {
+  grid-area: content;
+  overflow: hidden;
+}
