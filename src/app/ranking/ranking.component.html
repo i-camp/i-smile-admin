@@ -1,21 +1,28 @@
 <div class="ranking-container row">
-  <div class="photographer-container col-6">
+  <div class="photographer-container col-3">
     <img class="photographer-icon" src="assets/smartphone_photo_syame_woman.png">
-    <div class="media" *ngFor="let photographer of (photographers|async)">
-      <img class="mr-3" src="assets/smartphone_photo_syame_woman.png">
-      <div class="media-body">
-        <h5 class="mt-0">{{photographer.name}}</h5>
-        count: 100
+    <div class="photographer-list">
+      <div class="media" *ngFor="let photographer of (photographers|async)">
+        <img class="mr-3" src="assets/smartphone_photo_syame_woman.png">
+        <div class="media-body">
+          <h5 class="mt-0">{{photographer.name}}</h5>
+          count: 100
+        </div>
       </div>
     </div>
   </div>
-  <div class="subject-container col-6">
+  <div class="featured-photo-container col-6">
+    <sml-featured-photo></sml-featured-photo>
+  </div>
+  <div class="subject-container col-3">
     <img class="subject-icon" src="assets/camera_kao_ninshiki.png">
-    <div class="media" *ngFor="let subject of (subjects|async)">
-      <img class="mr-3" src="assets/camera_kao_ninshiki.png">
-      <div class="media-body">
-        <h5 class="mt-0">{{subject.name}}</h5>
-        count: 100
+    <div class="subject-list">
+      <div class="media" *ngFor="let subject of (subjects|async)">
+        <img class="mr-3" src="assets/camera_kao_ninshiki.png">
+        <div class="media-body">
+          <h5 class="mt-0">{{subject.name}}</h5>
+          count: 100
+        </div>
       </div>
     </div>
   </div>

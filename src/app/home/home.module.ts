@@ -9,6 +9,7 @@ import { HomeComponent } from './home.component';
 import { QuoteService } from './quote.service';
 import { RankingComponent } from '@app/ranking/ranking.component';
 import { PhotographGalleryComponent } from '@app/photograph-gallary/photograph-gallery.component';
+import {FeaturedPhotoComponent} from "@app/featured-photo/featured-photo.component";
 
 @NgModule({
   imports: [
@@ -19,7 +20,10 @@ import { PhotographGalleryComponent } from '@app/photograph-gallary/photograph-g
     HomeRoutingModule
   ],
   declarations: [
-    HomeComponent, RankingComponent, PhotographGalleryComponent
+    HomeComponent,
+    RankingComponent,
+    PhotographGalleryComponent,
+    FeaturedPhotoComponent
   ],
   providers: [
     QuoteService
