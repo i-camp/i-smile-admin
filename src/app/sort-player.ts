@@ -2,19 +2,10 @@ import { GameProgress } from '@app/game';
 import { chain } from 'lodash';
 
 export class SortPlayer {
+
     private sortList: SortedPlayersList = {
-        photographer: [
-            {
-                photographerId: null,
-                name: null
-            }
-        ],
-        subject: [
-            {
-                subjectId: null,
-                name: null
-            }
-        ]
+        photographer: [],
+        subject: []
     };
 
     sortData(data: GameProgress): SortedPlayersList {
@@ -33,15 +24,12 @@ export class SortPlayer {
             .orderBy(['count'], ['desc'])
             .value();
 
-        // idとnameの対応リスト作成
-        const idNameList = data.players
-            .filter((obj, i, self) => self.findIndex(obj2 => obj2.id === obj.id) === i);
-
         // nameと連結しsortListにpush（撮影スコア）
         for (const value of photographerScore) {
             this.sortList.photographer.push({
                 photographerId: value.photographerId,
-                name: idNameList.find(obj => obj.id === value.photographerId).name
+                name: data.players.find(obj => obj.id === value.photographerId).name,
+                count: value.count
             });
         }
 
@@ -49,12 +37,10 @@ export class SortPlayer {
         for (const value of subjectScore) {
             this.sortList.subject.push({
                 subjectId: value.subjectId,
-                name: idNameList.find(obj => obj.id === value.subjectId).name
+                name: data.players.find(obj => obj.id === value.subjectId).name,
+                count: value.count
             });
         }
-
-        this.sortList.photographer = this.sortList.photographer.filter(obj => obj.photographerId !== null);
-        this.sortList.subject = this.sortList.subject.filter(obj => obj.subjectId !== null);
 
         return this.sortList;
     }
@@ -65,10 +51,12 @@ interface SortedPlayersList {
     {
         photographerId: string;
         name: string;
+        count: number;
     }[];
     subject:
     {
         subjectId: string;
         name: string;
+        count: number;
     }[];
 }
