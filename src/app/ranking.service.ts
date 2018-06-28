@@ -5,6 +5,7 @@ import {GameProgress, RankingEvent} from '@app/game';
 import {GameManagementService} from '@app/game-management.service';
 import {map, take} from 'rxjs/operators';
 import {AngularFireDatabase, SnapshotAction} from 'angularfire2/database';
+import {SortPlayer} from '@app/sort-player';
 
 @Injectable({
   providedIn: 'root'
@@ -57,6 +58,7 @@ export class RankingService {
     return this.getGameProgress().pipe(
       map((data: GameProgress) => {
         // TODO dataを集計してreturn
+        /*
         return {
           photographer: [
             {photographerId: 'ddd', name: 'sss2'},
@@ -69,6 +71,8 @@ export class RankingService {
             {subjectId: 'sss', name: 'sss2'}
           ]
         };
+        */
+       return new SortPlayer().sortData(data);
       }));
   }
 }

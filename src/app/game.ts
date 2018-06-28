@@ -15,8 +15,8 @@ export interface SnapEvent {
 }
 
 export interface RankingEvent {
-  photographer: { photographerId: string, name: string }[];
-  subject: { subjectId: string, name: string }[];
+  photographer: { photographerId: string, name: string, count: number }[];
+  subject: { subjectId: string, name: string , count: number}[];
 }
 
 export interface GameProgress {
