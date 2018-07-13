@@ -26,18 +26,28 @@ export class SortPlayer {
 
         // nameと連結しsortListにpush（撮影スコア）
         for (const value of photographerScore) {
+            const photographer = data.players.find(obj => obj.id === value.photographerId);
+            if (!photographer) {
+                continue;
+            }
+
             this.sortList.photographer.push({
                 photographerId: value.photographerId,
-                name: data.players.find(obj => obj.id === value.photographerId).name,
+                name: photographer.name,
                 count: value.count
             });
         }
 
         // nameと連結しsortListにpush（被写体スコア）
         for (const value of subjectScore) {
+            const subject = data.players.find(obj => obj.id === value.subjectId);
+            if (!subject) {
+                continue;
+            }
+
             this.sortList.subject.push({
                 subjectId: value.subjectId,
-                name: data.players.find(obj => obj.id === value.subjectId).name,
+                name: subject.name,
                 count: value.count
             });
         }
