@@ -3,7 +3,7 @@
     <sml-photograph-gallery></sml-photograph-gallery>
   </div>
   <div class="ranking-container full-fill-wrapper">
-    <sml-ranking></sml-ranking>
+    <sml-ranking [style.display]="isShownRanking?'block':'none'"></sml-ranking>
   </div>
   <div class="remaining-container full-fill-wrapper">
     {{(remaining|async)}}

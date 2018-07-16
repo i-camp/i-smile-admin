@@ -22,6 +22,8 @@ export class GameManagementService {
   private _startedSubject = new Subject<{ startedAt: Date }>();
   private _progressedSubject = new Subject<{ remaining: number }>();
   private _finishedSubject = new Subject<{ finishedAt: Date }>();
+  private _rankingAppearedSubject = new Subject<{ isShow: true }>();
+  private _rankingDisappearedSubject = new Subject<{ isShow: false }>();
 
   private logger = new Logger('GameManagementService');
 
@@ -51,6 +53,13 @@ export class GameManagementService {
     return this._finishedSubject.asObservable();
   }
 
+  get rankingAppearedObservable(): Observable<{ isShow: true }> {
+    return this._rankingAppearedSubject.asObservable();
+  }
+
+  get rankingDisappearedObservable(): Observable<{ isShow: false }> {
+    return this._rankingDisappearedSubject.asObservable();
+  }
 
   public createGame(conf: GameConf): PromiseLike<any> {
     const newGame = new Game();
@@ -85,6 +94,14 @@ export class GameManagementService {
         this._finishedSubject.next({finishedAt: now});
         this.currentGameTimer.unsubscribe();
       });
+  }
+
+  public setRankingVisibility(isShow: boolean): void {
+    if (isShow) {
+      this._rankingAppearedSubject.next({isShow: true});
+      return;
+    }
+    this._rankingDisappearedSubject.next({isShow: false});
   }
 
   private startTimer() {
