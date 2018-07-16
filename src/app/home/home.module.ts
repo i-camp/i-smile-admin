@@ -9,7 +9,8 @@ import { HomeComponent } from './home.component';
 import { QuoteService } from './quote.service';
 import { RankingComponent } from '@app/ranking/ranking.component';
 import { PhotographGalleryComponent } from '@app/photograph-gallary/photograph-gallery.component';
-import {FeaturedPhotoComponent} from "@app/featured-photo/featured-photo.component";
+import { FeaturedPhotoComponent } from '@app/featured-photo/featured-photo.component';
+import { ScoreBoardComponent } from '@app/home/score-board.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import {FeaturedPhotoComponent} from "@app/featured-photo/featured-photo.compone
     HomeComponent,
     RankingComponent,
     PhotographGalleryComponent,
-    FeaturedPhotoComponent
+    FeaturedPhotoComponent,
+    ScoreBoardComponent
   ],
   providers: [
     QuoteService
