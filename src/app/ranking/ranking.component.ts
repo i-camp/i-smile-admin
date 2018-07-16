@@ -26,10 +26,10 @@ export class RankingComponent implements OnInit {
     // TODO should unsubscribe when stop game + n second
     const rankingObservable = this.ranking.updatedObservable.pipe(share());
     this.photographers = rankingObservable.pipe(
-      map((rank: RankingEvent) => rank.photographer.slice(0,this.MAX_DISPLAYED_USERS_COUNT))
+      map((rank: RankingEvent) => rank.photographer.slice(0, this.MAX_DISPLAYED_USERS_COUNT))
     );
     this.subjects = rankingObservable.pipe(
-      map((rank: RankingEvent) => rank.subject.slice(0,this.MAX_DISPLAYED_USERS_COUNT))
+      map((rank: RankingEvent) => rank.subject.slice(0, this.MAX_DISPLAYED_USERS_COUNT))
     );
     rankingObservable.subscribe((e) => {
       this.logger.debug(e);
