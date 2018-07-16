@@ -1,13 +1,9 @@
 <div class="ranking-container row">
   <div class="photographer-container col-3">
     <img class="photographer-icon" src="assets/smartphone_photo_syame_woman.png">
-    <div class="photographer-list">
-      <div class="media" *ngFor="let photographer of (photographers|async)">
-        <img class="mr-3" src="assets/smartphone_photo_syame_woman.png">
-        <div class="media-body">
-          <h5 class="mt-0">{{photographer.name}}</h5>
-          count: {{photographer.count}}
-        </div>
+    <div class="photographer-list list-group">
+      <div class="photographer list-group-item" *ngFor="let photographer of (photographers|async)">
+        <h5>{{subject?.name}}</h5> count: {{subject?.count}}
       </div>
     </div>
   </div>
@@ -16,13 +12,9 @@
   </div>
   <div class="subject-container col-3">
     <img class="subject-icon" src="assets/camera_kao_ninshiki.png">
-    <div class="subject-list">
-      <div class="media" *ngFor="let subject of (subjects|async)">
-        <img class="mr-3" src="assets/camera_kao_ninshiki.png">
-        <div class="media-body">
-          <h5 class="mt-0">{{subject.name}}</h5>
-          count: {{subject.count}}
-        </div>
+    <div class="subject-list list-group">
+      <div class="subject list-group-item" *ngFor="let subject of (subjects|async)">
+        <h5>{{subject?.name}}</h5> count: {{subject?.count}}
       </div>
     </div>
   </div>

@@ -26,6 +26,10 @@
   .photographer-list {
     overflow: scroll;
     background-color: $white;
+    .photographer {
+      display: flex;
+      justify-content: space-between;
+    }
   }
 }
 
@@ -42,6 +46,10 @@
   .subject-list {
     overflow: scroll;
     background-color: $white;
+  }
+  .subject {
+    display: flex;
+    justify-content: space-between;
   }
 }
 
