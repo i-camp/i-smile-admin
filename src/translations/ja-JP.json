@@ -1,7 +1,7 @@
 {
   "APP_NAME": "i-smile-admin",
-  "About": "A propos",
-  "Hello world !": "Bonjour le monde !",
-  "Home": "Accueil",
+  "About": "About",
+  "Hello world !": "Hello world !",
+  "Home": "Home",
   "Version": "Version"
 }
