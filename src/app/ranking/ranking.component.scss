@@ -6,11 +6,9 @@
   margin: 0;
 }
 
-@mixin player-kind-icon($background-color: $white, $size: 5rem) {
-  background-color: $background-color;
-  display: block;
-  width: $size; height: $size;
-  background-size: $size $size;
+@mixin background-icon($url) {
+  background: white url($url) no-repeat center;
+  background-size: contain;
 }
 
 .photographer-container {
@@ -18,13 +16,11 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  .photographer-icon {
-    @include player-kind-icon();
-  }
+  @include background-icon("assets/camera_icon.svg");
   .photographer-list {
     overflow: scroll;
-    background-color: $white;
     .photographer {
+      background-color: rgba(0,0,0,0);
       display: flex;
       justify-content: space-between;
     }
@@ -36,15 +32,12 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  .subject-icon {
-    @include player-kind-icon();
-    align-self: flex-end;
-  }
+  @include background-icon("assets/subject_icon.svg");
   .subject-list {
     overflow: scroll;
-    background-color: $white;
   }
   .subject {
+    background-color: rgba(0,0,0,0);
     display: flex;
     justify-content: space-between;
   }
