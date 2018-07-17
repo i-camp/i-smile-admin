@@ -18,12 +18,12 @@
   flex-direction: column;
   @include background-icon("assets/camera_icon.svg");
   .photographer-list {
-    overflow: scroll;
-    .photographer {
-      background-color: rgba(0,0,0,0);
-      display: flex;
-      justify-content: space-between;
-    }
+    overflow: hidden;
+  }
+  .photographer {
+    background-color: rgba(0, 0, 0, 0);
+    display: flex;
+    justify-content: space-between;
   }
 }
 
@@ -34,7 +34,7 @@
   flex-direction: column;
   @include background-icon("assets/subject_icon.svg");
   .subject-list {
-    overflow: scroll;
+    overflow: hidden;
   }
   .subject {
     background-color: rgba(0,0,0,0);
