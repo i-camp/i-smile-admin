@@ -1,20 +1,28 @@
 <div class="ranking-container row">
-  <div class="photographer-container col-3">
-    <div class="photographer-list list-group list-group-flush">
-      <div class="photographer list-group-item" *ngFor="let photographer of (photographers|async)">
-        <h5>{{photographer?.name}}</h5> count: {{photographer?.count}}
+
+  <div class="photographer-container" [class.col-3]="!isLargeRanking" [class.col-6]="isLargeRanking" [style.visibility]="rankingVisibility">
+    <div class="photographer-list player-list list-group list-group-flush" [class.scrollable-ranking]="isLargeRanking" >
+      <div class="list-group-item" *ngFor="let photographer of (photographers|async)">
+        <div class="photographer player">
+          <span class="player-name">{{photographer?.name}}</span><span class="score badge badge-secondary">{{photographer?.count}}</span>
+        </div>
       </div>
     </div>
   </div>
-  <div class="featured-photo-container col-6">
+
+  <div class="featured-photo-container col-6" [style.display]="featuredPhotoVisibility">
     <sml-featured-photo></sml-featured-photo>
   </div>
-  <div class="subject-container col-3">
-    <div class="subject-list list-group list-group-flush">
-      <div class="subject list-group-item" *ngFor="let subject of (subjects|async)">
-        <h5>{{subject?.name}}</h5> count: {{subject?.count}}
+
+  <div class="subject-container" [class.col-3]="!isLargeRanking" [class.col-6]="isLargeRanking" [style.visibility]="rankingVisibility">
+    <div class="subject-list player-list list-group list-group-flush" [class.scrollable-ranking]="isLargeRanking" >
+      <div class="list-group-item" *ngFor="let subject of (subjects|async)">
+        <div class="subject player">
+          <span class="player-name">{{subject?.name}}</span><span class="score badge badge-secondary">{{subject?.count}}</span>
+        </div>
       </div>
     </div>
   </div>
+
 </div>
 

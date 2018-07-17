@@ -11,7 +11,6 @@ export class GameControllerComponent implements OnInit, OnDestroy {
 
   public isStarted: boolean;
   public isFinished: boolean;
-  public isVisibleRanking = true;
 
   private subscriptions: Subscription[] = [];
 
@@ -47,10 +46,4 @@ export class GameControllerComponent implements OnInit, OnDestroy {
     // TODO should disable stop button
     this.game.stopGame();
   }
-
-  public toggleRankingVisibility() {
-    this.game.setRankingVisibility(!this.isVisibleRanking);
-    this.isVisibleRanking = !this.isVisibleRanking;
-  }
-
 }

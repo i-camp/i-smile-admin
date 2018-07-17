@@ -11,7 +11,7 @@
 
 .header-container {
   grid-area: header;
-  overflow: scroll;
+  z-index: 1;
 }
 
 .content-container {

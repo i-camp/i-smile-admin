@@ -11,15 +11,12 @@ import {map} from 'rxjs/operators';
 export class HomeComponent implements OnInit {
 
   public remaining: Observable<number>;
-  public isShownRanking = true;
 
   constructor(private game: GameManagementService) {
   }
 
   ngOnInit() {
     this.remaining = this.game.progressedObservable.pipe(map(event => event.remaining));
-    this.game.rankingDisappearedObservable.subscribe(e => this.isShownRanking = e.isShow);
-    this.game.rankingAppearedObservable.subscribe(e => this.isShownRanking = e.isShow);
   }
 
 }

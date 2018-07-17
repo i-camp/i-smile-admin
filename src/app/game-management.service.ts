@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs/internal/Subject';
-import {Game, GameConf} from '@app/game';
-import {AngularFireDatabase} from 'angularfire2/database';
+import {Game, GameConf, Layout} from '@app/game'; import {AngularFireDatabase} from 'angularfire2/database';
 import {interval} from 'rxjs/internal/observable/interval';
 import {Subscription} from 'rxjs/internal/Subscription';
 import {Observable} from 'rxjs/internal/Observable';
@@ -22,8 +21,7 @@ export class GameManagementService {
   private _startedSubject = new Subject<{ startedAt: Date }>();
   private _progressedSubject = new Subject<{ remaining: number }>();
   private _finishedSubject = new Subject<{ finishedAt: Date }>();
-  private _rankingAppearedSubject = new Subject<{ isShow: true }>();
-  private _rankingDisappearedSubject = new Subject<{ isShow: false }>();
+  private _updatedLayoutSubject = new Subject<{ layout: Layout}>();
 
   private logger = new Logger('GameManagementService');
 
@@ -53,12 +51,8 @@ export class GameManagementService {
     return this._finishedSubject.asObservable();
   }
 
-  get rankingAppearedObservable(): Observable<{ isShow: true }> {
-    return this._rankingAppearedSubject.asObservable();
-  }
-
-  get rankingDisappearedObservable(): Observable<{ isShow: false }> {
-    return this._rankingDisappearedSubject.asObservable();
+  get updatedLayoutObservable(): Observable<{ layout: Layout }> {
+    return this._updatedLayoutSubject.asObservable();
   }
 
   public createGame(conf: GameConf): PromiseLike<any> {
@@ -96,14 +90,6 @@ export class GameManagementService {
       });
   }
 
-  public setRankingVisibility(isShow: boolean): void {
-    if (isShow) {
-      this._rankingAppearedSubject.next({isShow: true});
-      return;
-    }
-    this._rankingDisappearedSubject.next({isShow: false});
-  }
-
   private startTimer() {
     let counter = this.currentGameConfig.during;
 
@@ -117,5 +103,8 @@ export class GameManagementService {
     });
   }
 
+  public setLayout(layout: Layout) {
+    this._updatedLayoutSubject.next({layout: layout});
+  }
 }
 

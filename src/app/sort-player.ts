@@ -10,18 +10,38 @@ export class SortPlayer {
 
     sortData(data: GameProgress): SortedPlayersList {
 
+        // TODO orderで同着の考慮ができていない
+
         // 撮影側の集計
-        const photographerScore = chain(data.snapEvents)
+        const _photographerScore: {photographerId: string, count: number}[] = chain(data.snapEvents)
             .countBy('photographerId')
             .map((a, b) => ({ photographerId: b, count: a }))
             .orderBy(['count'], ['desc'])
             .value();
+        const _photographerScoreOrder: number[] = chain(data.snapEvents)
+            .countBy('photographerId')
+            .values()
+            .orderBy([], ['desc'])
+            .uniq()
+            .value();
+        const photographerScore: { photographerId: string, count: number, order: number }[] = chain(_photographerScore)
+            .map((a) => Object.assign({order: _photographerScoreOrder.findIndex((c) => c === a.count) + 1}, a))
+            .value();
 
         // 被写体側の集計
-        const subjectScore = chain(data.snapEvents)
+        const _subjectScore: {subjectId: string, count: number}[] = chain(data.snapEvents)
             .countBy('subjectId')
             .map((a, b) => ({ subjectId: b, count: a }))
             .orderBy(['count'], ['desc'])
+            .value();
+        const _subjectScoreOrder: number[] = chain(data.snapEvents)
+            .countBy('subjectId')
+            .values()
+            .orderBy([], ['desc'])
+            .uniq()
+            .value();
+        const subjectScore: { subjectId: string, count: number, order: number }[] = chain(_subjectScore)
+            .map((a) => Object.assign({order: _subjectScoreOrder.findIndex((c) => c === a.count) + 1}, a))
             .value();
 
         // nameと連結しsortListにpush（撮影スコア）
@@ -34,7 +54,8 @@ export class SortPlayer {
             this.sortList.photographer.push({
                 photographerId: value.photographerId,
                 name: photographer.name,
-                count: value.count
+                count: value.count,
+                order: value.order
             });
         }
 
@@ -48,7 +69,8 @@ export class SortPlayer {
             this.sortList.subject.push({
                 subjectId: value.subjectId,
                 name: subject.name,
-                count: value.count
+                count: value.count,
+                order: value.order
             });
         }
 
@@ -62,11 +84,13 @@ interface SortedPlayersList {
         photographerId: string;
         name: string;
         count: number;
+        order: number;
     }[];
     subject:
     {
         subjectId: string;
         name: string;
         count: number;
+        order: number;
     }[];
 }

@@ -7,10 +7,10 @@
   min-width: 100%;
   min-height: 100%;
   grid-template-areas:
-    "pane16 pane10 pane17 pane15 pane2"
+    "pane1  pane10 pane17 pane2 pane15"
     "pane5  pane11 pane12 pane8  pane4"
     "pane13 pane6  pane3  pane0  pane18"
-    "pane7  pane19 pane14 pane9  pane1";
+    "pane7  pane19 pane14 pane9  pane16";
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
 }
