@@ -1,11 +1,11 @@
 <div class="home-container container-fluid">
-  <div class="photo-gallery-container full-fill-wrapper">
+  <div class="photo-gallery-container">
     <sml-photograph-gallery></sml-photograph-gallery>
   </div>
-  <div class="ranking-container full-fill-wrapper">
+  <div class="ranking-container">
     <sml-ranking [style.display]="isShownRanking?'block':'none'"></sml-ranking>
   </div>
-  <div class="remaining-container full-fill-wrapper">
+  <div class="remaining-container">
     {{(remaining|async)}}
   </div>
 </div>
