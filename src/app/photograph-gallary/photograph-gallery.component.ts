@@ -21,7 +21,7 @@ export class PhotographGalleryComponent implements OnInit {
   ngOnInit() {
     // init pane
     for (let i = 0; i < this.MAX_PHOTO_COUNT; i++) {
-      this.photoUrls[i] = 'https://placehold.jp/3d4070/8082ad/640x640.png?text=i-smile';
+      this.photoUrls[i] = 'https://placehold.jp/3d4070/8082ad/640x640.png?text=ya-smile';
     }
 
     // push photos to pane
