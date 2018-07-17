@@ -15,7 +15,7 @@ export class RankingComponent implements OnInit {
   public photographers: Observable<any[]>;
   public subjects: Observable<any[]>;
 
-  private MAX_DISPLAYED_USERS_COUNT = 3;
+  private MAX_DISPLAYED_USERS_COUNT = 20;
 
   private logger = new Logger('RankingComponent');
 
