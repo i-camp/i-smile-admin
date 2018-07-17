@@ -3,7 +3,7 @@
     <img class="photographer-icon" src="assets/camera_icon.svg">
     <div class="photographer-list list-group">
       <div class="photographer list-group-item" *ngFor="let photographer of (photographers|async)">
-        <h5>{{subject?.name}}</h5> count: {{subject?.count}}
+        <h5>{{photographer?.name}}</h5> count: {{photographer?.count}}
       </div>
     </div>
   </div>
