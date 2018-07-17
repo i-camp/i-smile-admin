@@ -13,6 +13,9 @@
   top: $sml-remaining-size * 1.5;
   bottom: 0;
   padding: 1rem;
+  sml-ranking {
+    height: 100%;
+  }
 }
 
 .remaining-container {
