@@ -1,6 +1,6 @@
 <div class="ranking-container row">
   <div class="photographer-container col-3">
-    <img class="photographer-icon" src="assets/smartphone_photo_syame_woman.png">
+    <img class="photographer-icon" src="assets/camera_icon.svg">
     <div class="photographer-list list-group">
       <div class="photographer list-group-item" *ngFor="let photographer of (photographers|async)">
         <h5>{{subject?.name}}</h5> count: {{subject?.count}}
@@ -11,7 +11,7 @@
     <sml-featured-photo></sml-featured-photo>
   </div>
   <div class="subject-container col-3">
-    <img class="subject-icon" src="assets/camera_kao_ninshiki.png">
+    <img class="subject-icon" src="assets/subject_icon.svg">
     <div class="subject-list list-group">
       <div class="subject list-group-item" *ngFor="let subject of (subjects|async)">
         <h5>{{subject?.name}}</h5> count: {{subject?.count}}

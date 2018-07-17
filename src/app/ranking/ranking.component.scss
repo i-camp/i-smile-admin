@@ -6,12 +6,11 @@
   margin: 0;
 }
 
-@mixin player-kind-icon($background-color: $white, $size: 4rem) {
+@mixin player-kind-icon($background-color: $white, $size: 5rem) {
   background-color: $background-color;
   display: block;
   width: $size; height: $size;
   background-size: $size $size;
-  border-radius: 50% 50% 0 0;
 }
 
 .photographer-container {
