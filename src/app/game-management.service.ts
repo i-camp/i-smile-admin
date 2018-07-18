@@ -1,10 +1,12 @@
 import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs/internal/Subject';
-import {Game, GameConf, Layout} from '@app/game'; import {AngularFireDatabase} from 'angularfire2/database';
+import {Game, GameConf} from '@app/game';
+import {AngularFireDatabase} from 'angularfire2/database';
 import {interval} from 'rxjs/internal/observable/interval';
 import {Subscription} from 'rxjs/internal/Subscription';
 import {Observable} from 'rxjs/internal/Observable';
 import {Logger} from '@app/core';
+import {Layout} from '@app/Layout';
 
 @Injectable({
   providedIn: 'root'
