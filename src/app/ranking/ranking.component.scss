@@ -13,17 +13,17 @@
   flex-direction: column;
   background: white url($url) no-repeat center;
   background-size: contain;
-  .list-group-item{
+  .list-group-item {
     background-color: rgba(0,0,0,0);
   }
 }
 
 .photographer-container {
-  @include player-container("assets/camera_icon.svg");
+  @include player-container("assets/camera_icon.png");
 }
 
 .subject-container {
-  @include player-container("assets/subject_icon.svg");
+  @include player-container("assets/subject_icon.png");
 }
 
 .featured-photo-container {
