@@ -21,8 +21,9 @@ export class RankingComponent implements OnInit, HasLayout {
   public featuredPhotoVisibility: 'block' | 'none';
   public isLargeRanking: boolean;
   public showWinner: boolean;
+  public showOrder: boolean;
 
-  private MAX_DISPLAYED_USERS_COUNT = 20;
+  private MAX_DISPLAYED_USERS_COUNT = 100;
 
   private logger = new Logger('RankingComponent');
 
@@ -65,6 +66,7 @@ export class RankingComponent implements OnInit, HasLayout {
     this.featuredPhotoVisibility = 'block';
     this.isLargeRanking = false;
     this.showWinner = false;
+    this.showOrder = false;
   }
 
   public onPhotoOnlyLayout(): void {
@@ -72,6 +74,7 @@ export class RankingComponent implements OnInit, HasLayout {
     this.featuredPhotoVisibility = 'block';
     this.isLargeRanking = false;
     this.showWinner = false;
+    this.showOrder = false;
   }
 
   public onResultLayout(): void {
@@ -79,6 +82,7 @@ export class RankingComponent implements OnInit, HasLayout {
     this.featuredPhotoVisibility = 'none';
     this.isLargeRanking = true;
     this.showWinner = true;
+    this.showOrder = true;
   }
 
 }

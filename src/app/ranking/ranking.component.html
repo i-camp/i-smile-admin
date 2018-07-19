@@ -4,7 +4,9 @@
     <div class="photographer-list player-list list-group list-group-flush" [class.scrollable-ranking]="isLargeRanking" >
       <div class="list-group-item" *ngFor="let photographer of (photographers|async)">
         <div class="photographer player" [class.winner]="photographer.order <= 20 && showWinner">
-          <span class="player-name">{{photographer?.name}}</span><span class="score badge badge-secondary">{{photographer?.score}}</span>
+          <span class="order" *ngIf="showOrder">{{photographer?.order}}</span>
+          <span class="player-name">{{photographer?.name}}</span>
+          <span class="score badge badge-secondary">{{photographer?.score}}</span>
         </div>
       </div>
     </div>
@@ -18,7 +20,9 @@
     <div class="subject-list player-list list-group list-group-flush" [class.scrollable-ranking]="isLargeRanking" >
       <div class="list-group-item" *ngFor="let subject of (subjects|async)">
         <div class="subject player" [class.winner]="subject.order <= 3 && showWinner">
-          <span class="player-name">{{subject?.name}}</span><span class="score badge badge-secondary">{{subject?.score}}</span>
+          <span class="order" *ngIf="showOrder">{{subject?.order}}</span>
+          <span class="player-name">{{subject?.name}}</span>
+          <span class="score badge badge-secondary">{{subject?.score}}</span>
         </div>
       </div>
     </div>
