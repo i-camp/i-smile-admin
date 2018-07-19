@@ -20,6 +20,7 @@ export class RankingComponent implements OnInit, HasLayout {
   public rankingVisibility: 'hidden' | 'visible';
   public featuredPhotoVisibility: 'block' | 'none';
   public isLargeRanking: boolean;
+  public showWinner: boolean;
 
   private MAX_DISPLAYED_USERS_COUNT = 20;
 
@@ -63,18 +64,21 @@ export class RankingComponent implements OnInit, HasLayout {
     this.rankingVisibility = 'visible';
     this.featuredPhotoVisibility = 'block';
     this.isLargeRanking = false;
+    this.showWinner = false;
   }
 
   public onPhotoOnlyLayout(): void {
     this.rankingVisibility = 'hidden';
     this.featuredPhotoVisibility = 'block';
     this.isLargeRanking = false;
+    this.showWinner = false;
   }
 
   public onResultLayout(): void {
     this.rankingVisibility = 'visible';
     this.featuredPhotoVisibility = 'none';
     this.isLargeRanking = true;
+    this.showWinner = true;
   }
 
 }

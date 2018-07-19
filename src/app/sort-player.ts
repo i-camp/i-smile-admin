@@ -3,94 +3,79 @@ import { chain } from 'lodash';
 
 export class SortPlayer {
 
-    private sortList: SortedPlayersList = {
-        photographer: [],
-        subject: []
-    };
-
     sortData(data: GameProgress): SortedPlayersList {
+        const photographerScores: { uuid: string, score: number }[] =
+          this.aggregateByUuid(data, 'photographerId');
+        const subjectScores: { uuid: string, score: number }[] =
+          this.aggregateByUuid(data, 'photographerId');
 
-        // TODO orderで同着の考慮ができていない
+        const psWithOrder: { uuid: string, score: number, order: number }[] = this.addOrder(photographerScores);
+        const ssWithOrder: { uuid: string, score: number, order: number }[] = this.addOrder(subjectScores);
 
-        // 撮影側の集計
-        const _photographerScore: {photographerId: string, count: number}[] = chain(data.snapEvents)
-            .countBy('photographerId')
-            .map((a, b) => ({ photographerId: b, count: a }))
-            .orderBy(['count'], ['desc'])
-            .value();
-        const _photographerScoreOrder: number[] = chain(data.snapEvents)
-            .countBy('photographerId')
-            .values()
-            .orderBy([], ['desc'])
-            .uniq()
-            .value();
-        const photographerScore: { photographerId: string, count: number, order: number }[] = chain(_photographerScore)
-            .map((a) => Object.assign({order: _photographerScoreOrder.findIndex((c) => c === a.count) + 1}, a))
-            .value();
+        const psWithPlayerName: { uuid: string, name: string, score: number, order: number }[] =
+          this.addPlayerName(psWithOrder, data);
+        const ssWithPlayerName: { uuid: string, name: string, score: number, order: number }[] =
+          this.addPlayerName(ssWithOrder, data);
 
-        // 被写体側の集計
-        const _subjectScore: {subjectId: string, count: number}[] = chain(data.snapEvents)
-            .countBy('subjectId')
-            .map((a, b) => ({ subjectId: b, count: a }))
-            .orderBy(['count'], ['desc'])
-            .value();
-        const _subjectScoreOrder: number[] = chain(data.snapEvents)
-            .countBy('subjectId')
-            .values()
-            .orderBy([], ['desc'])
-            .uniq()
-            .value();
-        const subjectScore: { subjectId: string, count: number, order: number }[] = chain(_subjectScore)
-            .map((a) => Object.assign({order: _subjectScoreOrder.findIndex((c) => c === a.count) + 1}, a))
-            .value();
+        return { photographer: psWithPlayerName, subject: ssWithPlayerName};
+    }
 
-        // nameと連結しsortListにpush（撮影スコア）
-        for (const value of photographerScore) {
-            const photographer = data.players.find(obj => obj.id === value.photographerId);
-            if (!photographer) {
-                continue;
-            }
+    private aggregateByUuid(data: GameProgress, uuidIdName: 'photographerId'|'subjectId'): { uuid: string, score: number}[] {
+      return chain(data.snapEvents)
+        .countBy(uuidIdName)
+        .map((a, b) => ({ uuid: b, score: a }))
+        .orderBy(['score'], ['desc'])
+        .value();
+    }
 
-            this.sortList.photographer.push({
-                photographerId: value.photographerId,
-                name: photographer.name,
-                count: value.count,
-                order: value.order
-            });
+    private addOrder(target: { uuid: string, score: number}[]): { uuid: string, score: number, order: number }[] {
+      const scoreSummary: { score: number, countOfPlayer: number }[] = chain(target.slice())
+        .countBy('score')
+        .map((a, b) => ({ score: parseInt(b, 10), countOfPlayer: a }))
+        .orderBy(['score'], ['desc'])
+        .value();
+
+      return target.map((score) => {
+        const index: number = scoreSummary.findIndex((so) => so.score === score.score);
+        const order: number = scoreSummary.slice(0, index)
+          .map(a => a.countOfPlayer)
+          .reduce((a, b) => a + b, 0) + 1;
+        return Object.assign({order: order}, score);
+      });
+    }
+
+    private addPlayerName(target: { uuid: string, score: number, order: number }[], data: GameProgress): { uuid: string, name: string, score: number, order: number }[]{
+      const scores =  [];
+      for (const value of target) {
+        const player = data.players.find(obj => obj.id === value.uuid);
+        if (!player) {
+          continue;
         }
 
-        // nameと連結しsortListにpush（被写体スコア）
-        for (const value of subjectScore) {
-            const subject = data.players.find(obj => obj.id === value.subjectId);
-            if (!subject) {
-                continue;
-            }
-
-            this.sortList.subject.push({
-                subjectId: value.subjectId,
-                name: subject.name,
-                count: value.count,
-                order: value.order
-            });
-        }
-
-        return this.sortList;
+        scores.push({
+          uuid: value.uuid,
+          name: player.name,
+          score: value.score,
+          order: value.order
+        });
+      }
+      return scores;
     }
 }
 
 interface SortedPlayersList {
     photographer:
     {
-        photographerId: string;
+        uuid: string;
         name: string;
-        count: number;
+        score: number;
         order: number;
     }[];
     subject:
     {
-        subjectId: string;
+        uuid: string;
         name: string;
-        count: number;
+        score: number;
         order: number;
     }[];
 }
