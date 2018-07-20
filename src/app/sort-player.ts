@@ -7,7 +7,7 @@ export class SortPlayer {
         const photographerScores: { uuid: string, score: number }[] =
           this.aggregateByUuid(data, 'photographerId');
         const subjectScores: { uuid: string, score: number }[] =
-          this.aggregateByUuid(data, 'photographerId');
+          this.aggregateByUuid(data, 'subjectId');
 
         const psWithOrder: { uuid: string, score: number, order: number }[] = this.addOrder(photographerScores);
         const ssWithOrder: { uuid: string, score: number, order: number }[] = this.addOrder(subjectScores);
